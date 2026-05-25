@@ -1,0 +1,139 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #d9d9e6;
+    color: black; 
+}
+
+header{
+    display: flex;
+    background-color: #6C63FF;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    margin-bottom: 1rem;
+}
+
+header span{
+    color: #F0C040;
+}
+
+header input{
+    border: none;
+    border-radius: 5px;
+    background-color: #d9d9e6;
+}
+
+main{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin: 15px;
+}
+
+#ajouter{
+    background-color: #6C63FF;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5px 20px;
+    margin: 0 15px 50px 0;
+    border-radius: 8px;
+}
+
+main table {
+    width: 100%;
+    border-collapse: separate; /* Obligatoire pour les arrondis */
+    border-spacing: 0;       /* Supprime l'espace entre les bordures */
+    border: 1px solid #6C63FF;
+    border-radius: 10px;      /* C'est ici que ça se passe */
+    overflow: hidden;         /* Important : "coupe" le contenu qui dépasse des coins */
+    margin-top: 20px;
+}
+
+main table{
+    border-radius: 10px;
+    width: 100%;
+    border: 1px black;
+    margin-top: 20px;
+}
+
+main thead tr{
+    background-color: #6C63FF;
+    color: #FFFFFF;
+}
+
+main thead th{
+    padding:10px;
+}
+
+main thead td{
+    padding: 5px;
+}
+
+#form{
+    background-color: #6C63FF;
+    justify-content: center;
+    padding:100px 50px;
+    border-radius: 20px;
+}
+
+#f-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#enregister{
+    border: none;
+    background-color: #F0C040;
+    border-radius: 8px;
+    padding:10px;
+    width: 100px;
+}
+
+fieldset{
+    border: none;
+    color:#FFFFFF;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#form div a{
+    color: black;
+    padding: 0 10px;
+    width: 80px;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #FFFFFF;
+}
+
+#form div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#form input{
+    border: none;
+}
+
+footer{
+    background-color: #6C63FF;
+    padding: 20px 10px 60px 10px;
+}
+
+
