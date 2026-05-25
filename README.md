@@ -4,9 +4,10 @@
 
 ```ficher html terminé avec succès 
     index.html 
-    form.html```
+    form.html
+```
 
-## 2- Etape.
+## 2- Etape. 
 
 ```la creation de :
     style.css
