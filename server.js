@@ -1,11 +1,80 @@
-const express = require('express'); // 1. On appelle l'assistant Express
-const app = express();             // 2. On crée l'application serveur
-const port = 3000;                 // 3. On choisit une "porte" d'entrée
+//les besion exterieur ...
+const express = require('express');
+const mysql = require('mysql2');
 
-// 4. On dit au serveur : "Quand on te demande un fichier, cherche dans le dossier actuel"
+//l'utilisation de express apporter . 
+const app = express();
+const port = 3000;
+
+/*
+les informations qu'on à besoin pour assure 
+la connexion de notre base avec notre server ... 
+*/
+const host = 'localhost';
+const user = 'dihyath';
+const password = 'dihyath292';
+const database = 'contacts_db';
+
+//indique ou trouver notre fameux outil express.
 app.use(express.static('.'));
+app.use(express.json());
 
-// 5. On demande au serveur d'écouter les requêtes sur le port 3000
-app.listen(port, () => {
-    console.log(`Serveur actif sur http://localhost:${port}`);
+//créer la connexion avec mysql.
+const connection = mysql.createConnection({host,user,password,database});
+
+//Tester la connection. 
+connection.connect(function(err){
+    if(err) {
+        console.error('Erreur de connexion :', err);
+    } else {
+        console.log('Connecté à MySQL !');
+    }
 });
+
+
+//La route de soumission.
+app.post('/contacts', function(req,res){
+
+    //recupération des information soutirer.
+    const nom = req.body.nom;
+    const telephone = req.body.telephone;
+    const email = req.body.email;
+
+    /*
+    Les données qu'on veut inserer,
+    et les requête pour les inserer dans notre bases de données
+    */
+    const sql = 'INSERT INTO contacts (nom, telephone, email) VALUES (?, ?, ?)';
+    const valeurs = [nom, telephone, email];
+
+    //insertion et verification .
+    connection.query(sql, valeurs, function(err, result) {
+        if (err) {
+            res.json({ succes: false, erreur: err.message });
+        } else {
+            res.json({ succes: true });
+        }
+    });
+
+});
+
+//Recupération de mes données dans ma bases de données .
+app.get('/contacts', function (req, res){
+
+    const sql = 'SELECT * FROM contacts';
+
+    connection.query(sql, function(err, result) {
+        if (err) {
+            res.json({ succes: false, erreur: err.message });
+        } else {
+            res.json(result);
+        }
+    });
+
+});
+
+//Indique au serveur quelle port écouter.
+app.listen(port, function(){
+    console.log(`le server http://localhost:${port} est prêt`);
+});
+
