@@ -73,6 +73,25 @@ app.get('/contacts', function (req, res){
 
 });
 
+//le routeur pour supprimer un contact viser.
+app.delete('/contacts/:id',function(req,res){
+    //d'abord récupérer l'id du contacts .
+    const id = req.params.id;
+    //et enfin l'ancer la réquête pour le supprimer de nos contacts.
+    const sql = 'DELETE FROM contacts WHERE id = ?';
+
+    //utiliser cette requête pour le supprimer .
+    //et vérifier si tout va bien avec notre demande.
+    connection.query(sql,[id], function(err, result){
+        if (err) {
+            res.json({succes: false, erreur: err.message });
+        } else {
+            res.json(result);
+        }
+    });
+
+});
+
 //Indique au serveur quelle port écouter.
 app.listen(port, function(){
     console.log(`le server http://localhost:${port} est prêt`);
